@@ -1,28 +1,34 @@
+let w = 50; // Width of the shape
+let h = 70; // Height of the shape
+
 function setup() {
   createCanvas(600, 400);
 }
 
 function draw() {
-  background(200);
-
-  //this is a call to myShape()
-  myShape(width / 2, height / 2, 1);
-  // myShape() takes three arguments
-  // arg1: horizontal location
-  // arg2: vertical location
-  // arg3: scale factor (1 is full size)
-  /* add two more calls to myShape that draw your shape in different locations
-  */
-  
+  background(200, 160, 400);
+  myShape(width / 4, height / 2, 1);
+  myShape(3 * width / 4, height / 2, 0.8);
+  myShape(width / 2, height / 4, 1.2);
 }
 
 function myShape(x, y, s) {
-  // make this function more interesting
-  push(); // make a separate layer
-  translate(x, y); // move the origin point
+  push(); // Create a separate layer
+  translate(x, y); // Move the origin point
   scale(s);
+  fill(500, 200, 300);
+
+  ellipse(0, 0, w, h); // Head
+  fill(200, 90, 400);
+  ellipse(-10, -10, 10, 10); // Eyes
+  ellipse(10, -10, 10, 10);
   
-  ellipse(0, 0, w, h); // simple ellipse at the translated origin (0,0)
-  
-  pop(); // dispose of the layer
+
+  beginShape();   // Mouth
+  vertex(-10, 10); 
+  quadraticVertex(0, 30, 10, 10);
+  fill(380, 90, 20)
+  endShape();
+
+  pop(); // Dispose of the layer
 }
